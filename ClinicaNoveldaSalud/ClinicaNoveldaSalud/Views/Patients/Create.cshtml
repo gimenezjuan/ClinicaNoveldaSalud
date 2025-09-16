@@ -1,53 +1,76 @@
-﻿@model ClinicaNoveldaSalud.Models.Patient
+﻿@model ClinicaNoveldaSalud.Models.ViewModels.PatientViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Paciente";
 }
 
-<h1>Create</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>Patient</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InsurerName" class="control-label"></label>
-                <input asp-for="InsurerName" class="form-control" />
-                <span asp-validation-for="InsurerName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-action="Create" enctype="multipart/form-data" class="row g-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!-- Datos básicos -->
+    <div class="col-md-6">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
-</div>
+    <div class="col-md-6">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="BirthDate" class="form-label"></label>
+        <input asp-for="BirthDate" type="date" class="form-control" />
+        <span asp-validation-for="BirthDate" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <!-- Aseguradora y departamento -->
+    <div class="col-md-6">
+        <label asp-for="InsurerName" class="form-label"></label>
+        <input asp-for="InsurerName" class="form-control" />
+        <span asp-validation-for="InsurerName" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="DepartmentName" class="form-label"></label>
+        <input asp-for="DepartmentName" class="form-control" />
+        <span asp-validation-for="DepartmentName" class="text-danger"></span>
+    </div>
+
+    <!-- Primera visita (opcional) -->
+    <fieldset class="border rounded p-3 mb-3">
+        <legend class="float-none w-auto px-2">Primera visita (opcional)</legend>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label asp-for="VisitDate" class="form-label"></label>
+                <input asp-for="VisitDate" type="date" class="form-control" />
+                <span asp-validation-for="VisitDate" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="VisitComments" class="form-label"></label>
+                <textarea asp-for="VisitComments" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="VisitComments" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="Attachments" class="form-label"></label>
+                <input asp-for="Attachments" type="file" multiple class="form-control" />
+                <span asp-validation-for="Attachments" class="text-danger"></span>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Crear Paciente</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <partial name="_ValidationScriptsPartial" />
 }
