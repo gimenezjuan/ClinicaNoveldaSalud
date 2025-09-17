@@ -1,48 +1,66 @@
 ﻿@model ClinicaNoveldaSalud.Models.Patient
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Ficha de Paciente";
 }
 
-<h1>Details</h1>
+<h1>@Model.FullName</h1>
 
-<div>
-    <h4>Patient</h4>
-    <hr />
+<div class="mb-4">
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InsurerName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InsurerName)
-        </dd>
+        <dt class="col-sm-3">Fecha de nacimiento</dt>
+        <dd class="col-sm-9">@Model.BirthDate?.ToString("dd/MM/yyyy")</dd>
+
+        <dt class="col-sm-3">Teléfono</dt>
+        <dd class="col-sm-9">@Model.Phone</dd>
+
+        <dt class="col-sm-3">Aseguradora</dt>
+        <dd class="col-sm-9">@Model.InsurerName</dd>
     </dl>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Editar Paciente</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver al listado</a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@* Recorremos cada departamento asignado al paciente *@
+@foreach (var pd in Model.PatientDepartments.OrderByDescending(pd => pd.CreatedAt))
+{
+    <div class="card mb-3">
+        <div class="card-header">
+            Departamento: @pd.DepartmentName
+            <span class="badge bg-light text-dark float-end">
+                Creado @pd.CreatedAt.ToString("dd/MM/yyyy")
+            </span>
+        </div>
+        <div class="card-body p-0">
+            <table class="table mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Fecha visita</th>
+                        <th>Comentarios</th>
+                        <th>Adjuntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var v in pd.Visits.OrderByDescending(v => v.VisitDate))
+                    {
+                        <tr>
+                            <td>@v.VisitDate.ToString("dd/MM/yyyy")</td>
+                            <td>@v.Comments</td>
+                            <td>
+                                @foreach (var a in v.Attachments)
+                                {
+                                    <div>
+                                        <a target="_blank"
+                                           href="~/uploads/@Model.Id/@v.Id/@a.FileName">
+                                            @a.FileName
+                                        </a>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

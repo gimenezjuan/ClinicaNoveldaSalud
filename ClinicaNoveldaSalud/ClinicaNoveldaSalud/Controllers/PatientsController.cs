@@ -29,21 +29,17 @@ namespace ClinicaNoveldaSalud.Controllers
         // GET: Patients/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var patient = await _context.Patients
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (patient == null)
-            {
-                return NotFound();
-            }
+                .Include(p => p.PatientDepartments)
+                    .ThenInclude(pd => pd.Visits)
+                        .ThenInclude(v => v.Attachments)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
+            if (patient == null) return NotFound();
             return View(patient);
         }
-
         // GET: Patients/Create
         public IActionResult Create()
         {

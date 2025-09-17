@@ -1,0 +1,27 @@
+﻿@model ClinicaNoveldaSalud.Models.ViewModels.AddVisitViewModel
+
+<form asp-action="Add" asp-controller="Visit"
+      enctype="multipart/form-data" id="frmAddVisit">
+    <input type="hidden" asp-for="PatientId" />
+
+    <div class="mb-3">
+        <label asp-for="VisitDate" class="form-label"></label>
+        <input asp-for="VisitDate" type="date" class="form-control" />
+        <span asp-validation-for="VisitDate" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Comments" class="form-label"></label>
+        <textarea asp-for="Comments" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Comments" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Attachments" class="form-label"></label>
+        <input asp-for="Attachments" type="file" multiple class="form-control" />
+        <span asp-validation-for="Attachments" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar Visita</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
