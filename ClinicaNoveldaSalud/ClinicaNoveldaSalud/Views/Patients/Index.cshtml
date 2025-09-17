@@ -1,55 +1,69 @@
-﻿@model ClinicaNoveldaSalud.Models.ViewModels.PatientViewModel
+﻿@model IEnumerable<ClinicaNoveldaSalud.Models.Patient>
 
 @{
-    ViewData["Title"] = "Editar Paciente";
+    ViewData["Title"] = "Pacientes";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<form asp-action="Edit" enctype="multipart/form-data" class="row g-3">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear nuevo paciente</a>
+</p>
 
-    <!-- Datos básicos -->
-    <div class="col-md-6">
-        <label asp-for="FirstName" class="form-label"></label>
-        <input asp-for="FirstName" class="form-control" />
-        <span asp-validation-for="FirstName" class="text-danger"></span>
+<form method="get" class="row g-2 mb-3">
+    <div class="col-auto">
+        <input type="text"
+               name="search"
+               value="@(ViewData["Search"] ?? "")"
+               class="form-control"
+               placeholder="Buscar nombre..." />
     </div>
-    <div class="col-md-6">
-        <label asp-for="LastName" class="form-label"></label>
-        <input asp-for="LastName" class="form-control" />
-        <span asp-validation-for="LastName" class="text-danger"></span>
+    <div class="col-auto">
+        <input type="text"
+               name="deptFilter"
+               value="@(ViewData["DeptFilter"] ?? "")"
+               class="form-control"
+               placeholder="Departamento..." />
     </div>
-    <div class="col-md-4">
-        <label asp-for="BirthDate" class="form-label"></label>
-        <input asp-for="BirthDate" type="date" class="form-control" />
-        <span asp-validation-for="BirthDate" class="text-danger"></span>
-    </div>
-    <div class="col-md-4">
-        <label asp-for="Phone" class="form-label"></label>
-        <input asp-for="Phone" class="form-control" />
-        <span asp-validation-for="Phone" class="text-danger"></span>
-    </div>
-
-    <!-- Aseguradora y departamento -->
-    <div class="col-md-6">
-        <label asp-for="InsurerName" class="form-label"></label>
-        <input asp-for="InsurerName" class="form-control" />
-        <span asp-validation-for="InsurerName" class="text-danger"></span>
-    </div>
-    <div class="col-md-6">
-        <label asp-for="DepartmentName" class="form-label"></label>
-        <input asp-for="DepartmentName" class="form-control" />
-        <span asp-validation-for="DepartmentName" class="text-danger"></span>
-    </div>
-
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-outline-secondary">Filtrar</button>
     </div>
 </form>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Fecha de nacimiento</th>
+            <th>Aseguradora</th>
+            <th>Departamento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@item.BirthDate?.ToString("dd/MM/yyyy")</td>
+                <td>@item.InsurerName</td>
+                <td>
+                    @(
+                        item.PatientDepartments
+                        .OrderByDescending(pd => pd.CreatedAt)
+                        .FirstOrDefault()?.DepartmentName
+                        ?? "Sin departamento"
+                        )
+            </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id"
+                       class="btn btn-sm btn-info">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"
+                       class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"
+                       class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

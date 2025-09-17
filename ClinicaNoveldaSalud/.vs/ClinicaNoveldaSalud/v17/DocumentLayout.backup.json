@@ -3,32 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\views\\patients\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\views\\patients\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\views\\patients\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\views\\patients\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\views\\patients\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\views\\patients\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\views\\patients\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\views\\patients\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\views\\shared\\_addvisitpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\views\\shared\\_addvisitpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\views\\patients\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\views\\patients\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\models\\viewmodels\\patientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\models\\viewmodels\\patientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\controllers\\visitattachmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\controllers\\visitattachmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\controllers\\visitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|solutionrelative:clinicanoveldasalud\\controllers\\visitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0E5FC3B7-0F13-45AD-91FF-4A7905B839A6}|ClinicaNoveldaSalud\\ClinicaNoveldaSalud.csproj|c:\\users\\juang\\desktop\\projects\\clinicanoveldasalud\\clinicanoveldasalud\\clinicanoveldasalud\\migrations\\20250916163438_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,21 +58,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 310,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Details.cshtml",
-              "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Views\\Patients\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Details.cshtml",
-              "RelativeToolTip": "ClinicaNoveldaSalud\\Views\\Patients\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-17T06:57:38.276Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -95,69 +74,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Index.cshtml",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Views\\Patients\\Index.cshtml",
               "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Index.cshtml",
               "RelativeToolTip": "ClinicaNoveldaSalud\\Views\\Patients\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-16T17:15:19.75Z",
+              "WhenOpened": "2025-09-17T08:22:23.647Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PatientViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Models\\ViewModels\\PatientViewModel.cs",
-              "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Models\\ViewModels\\PatientViewModel.cs",
-              "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Models\\ViewModels\\PatientViewModel.cs",
-              "RelativeToolTip": "ClinicaNoveldaSalud\\Models\\ViewModels\\PatientViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T17:05:24.067Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "VisitAttachmentsController.cs",
-              "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Controllers\\VisitAttachmentsController.cs",
-              "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Controllers\\VisitAttachmentsController.cs",
-              "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Controllers\\VisitAttachmentsController.cs",
-              "RelativeToolTip": "ClinicaNoveldaSalud\\Controllers\\VisitAttachmentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T16:57:00.225Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "VisitsController.cs",
-              "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Controllers\\VisitsController.cs",
-              "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Controllers\\VisitsController.cs",
-              "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Controllers\\VisitsController.cs",
-              "RelativeToolTip": "ClinicaNoveldaSalud\\Controllers\\VisitsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T16:55:50.846Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PatientsController.cs",
-              "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Controllers\\PatientsController.cs",
-              "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Controllers\\PatientsController.cs",
-              "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Controllers\\PatientsController.cs",
-              "RelativeToolTip": "ClinicaNoveldaSalud\\Controllers\\PatientsController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAwwCkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T16:53:36.891Z",
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Views\\Patients\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Edit.cshtml",
+              "RelativeToolTip": "ClinicaNoveldaSalud\\Views\\Patients\\Edit.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-17T07:58:42.426Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Details.cshtml",
+              "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Views\\Patients\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Details.cshtml",
+              "RelativeToolTip": "ClinicaNoveldaSalud\\Views\\Patients\\Details.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAIwEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-17T07:46:27.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_AddVisitPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Shared\\_AddVisitPartial.cshtml",
+              "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Views\\Shared\\_AddVisitPartial.cshtml",
+              "ToolTip": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Shared\\_AddVisitPartial.cshtml",
+              "RelativeToolTip": "ClinicaNoveldaSalud\\Views\\Shared\\_AddVisitPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-17T07:43:20.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "20250916163438_InitialCreate.cs",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Migrations\\20250916163438_InitialCreate.cs",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Migrations\\20250916163438_InitialCreate.cs",
@@ -169,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\appsettings.json",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\appsettings.json",
@@ -181,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Program.cs",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Program.cs",
@@ -193,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Views\\Patients\\Create.cshtml",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Views\\Patients\\Create.cshtml",
@@ -205,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "MvcNoveldaSaludContexto.cs",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Data\\MvcNoveldaSaludContexto.cs",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Data\\MvcNoveldaSaludContexto.cs",
@@ -217,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 9,
               "Title": "VisitAttachment.cs",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Models\\VisitAttachment.cs",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Models\\VisitAttachment.cs",
@@ -229,7 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 10,
               "Title": "Visit.cs",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Models\\Visit.cs",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Models\\Visit.cs",
@@ -241,7 +210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 11,
               "Title": "PatientDepartment.cs",
               "DocumentMoniker": "C:\\Users\\Juang\\Desktop\\Projects\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\ClinicaNoveldaSalud\\Models\\PatientDepartment.cs",
               "RelativeDocumentMoniker": "ClinicaNoveldaSalud\\Models\\PatientDepartment.cs",

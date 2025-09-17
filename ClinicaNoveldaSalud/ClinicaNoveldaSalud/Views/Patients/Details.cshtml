@@ -63,4 +63,14 @@
             </table>
         </div>
     </div>
+    <h3>Añadir nueva visita</h3>
+    <div id="addVisitContainer">
+        @await Html.PartialAsync(
+        "_AddVisitPartial",
+        new ClinicaNoveldaSalud.Models.ViewModels.AddVisitViewModel
+        {
+            PatientId = Model.Id,
+            VisitDate = DateTime.Today
+        })
+    </div>
 }
