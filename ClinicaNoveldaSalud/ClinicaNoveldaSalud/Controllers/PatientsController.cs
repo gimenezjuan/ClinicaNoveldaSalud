@@ -23,7 +23,10 @@ namespace ClinicaNoveldaSalud.Controllers
         // GET: Patients
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Patients.ToListAsync());
+            var patients = await _context.Patients
+                                .Include(p => p.PatientDepartments)   
+                                .ToListAsync();
+            return View(patients);
         }
 
         // GET: Patients/Details/5
@@ -71,7 +74,8 @@ namespace ClinicaNoveldaSalud.Controllers
             var pd = new PatientDepartment
             {
                 PatientId = patient.Id,
-                DepartmentName = vm.DepartmentName
+                DepartmentName = vm.DepartmentName,
+                CreatedAt = DateTime.UtcNow
             };
             _context.PatientDepartments.Add(pd);
             await _context.SaveChangesAsync();
@@ -158,16 +162,12 @@ namespace ClinicaNoveldaSalud.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, PatientViewModel vm)
         {
-            if (id != vm.Id)
-                return NotFound();
+            if (id != vm.Id) return NotFound();
+            if (!ModelState.IsValid) return View(vm);
 
-            if (!ModelState.IsValid)
-                return View(vm);
-
-            // 1) Actualizar datos de paciente
+            // 1) Actualizar Patient…
             var patient = await _context.Patients.FindAsync(id);
-            if (patient == null)
-                return NotFound();
+            if (patient == null) return NotFound();
 
             patient.FirstName = vm.FirstName;
             patient.LastName = vm.LastName;
@@ -180,16 +180,29 @@ namespace ClinicaNoveldaSalud.Controllers
 
             // 2) Actualizar la ficha de departamento (última creada)
             var pd = await _context.PatientDepartments
-                         .Where(x => x.PatientId == patient.Id)
-                         .OrderByDescending(x => x.CreatedAt)
-                         .FirstOrDefaultAsync();
-            if (pd != null && pd.DepartmentName != vm.DepartmentName)
+                           .Where(x => x.PatientId == patient.Id)
+                           .OrderByDescending(x => x.CreatedAt)
+                           .FirstOrDefaultAsync();
+
+            if (pd == null)
             {
+                // Si nunca hubo ficha, la creas
+                pd = new PatientDepartment
+                {
+                    PatientId = patient.Id,
+                    DepartmentName = vm.DepartmentName,
+                    CreatedAt = DateTime.UtcNow
+                };
+                _context.PatientDepartments.Add(pd);
+            }
+            else if (pd.DepartmentName != vm.DepartmentName)
+            {
+                // Si cambia el nombre, actualizas solo ese campo
                 pd.DepartmentName = vm.DepartmentName;
                 _context.PatientDepartments.Update(pd);
-                await _context.SaveChangesAsync();
             }
 
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

@@ -50,9 +50,10 @@
                 <td>
                     @(
                         item.PatientDepartments
-                        .OrderByDescending(pd => pd.CreatedAt)
-                        .FirstOrDefault()?.DepartmentName
-                        ?? "Sin departamento"
+                            .OrderByDescending(pd => pd.CreatedAt)
+                            .Select(pd => pd.DepartmentName)
+                            .FirstOrDefault()
+                            ?? "Sin departamento"
                         )
             </td>
                 <td>
