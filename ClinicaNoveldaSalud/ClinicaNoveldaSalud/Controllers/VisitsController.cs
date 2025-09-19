@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ClinicaNoveldaSalud.Data;
+using ClinicaNoveldaSalud.Models;
+using ClinicaNoveldaSalud.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ClinicaNoveldaSalud.Data;
-using ClinicaNoveldaSalud.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ClinicaNoveldaSalud.Controllers
 {
@@ -45,28 +46,66 @@ namespace ClinicaNoveldaSalud.Controllers
             return View(visit);
         }
 
-        // GET: Visits/Create
-        public IActionResult Create()
+        // GET: Visits/Add?patientId=5
+        [HttpGet]
+        public IActionResult Add(int patientId)
         {
-            ViewData["PatientDepartmentId"] = new SelectList(_context.PatientDepartments, "Id", "DepartmentName");
-            return View();
+            var vm = new AddVisitViewModel
+            {
+                PatientId = patientId,
+                VisitDate = DateTime.Today
+            };
+            return PartialView("_AddVisitPartial", vm);
         }
 
-        // POST: Visits/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Visits/Add
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PatientDepartmentId,VisitDate,Comments")] Visit visit)
+        public async Task<IActionResult> Add(AddVisitViewModel vm)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return PartialView("_AddVisitPartial", vm);
+
+            var pd = await _context.PatientDepartments
+                .Where(x => x.PatientId == vm.PatientId)
+                .OrderByDescending(x => x.CreatedAt)
+                .FirstOrDefaultAsync();
+
+            if (pd == null)
+                return BadRequest("No existe ficha de departamento.");
+
+            var visit = new Visit
             {
-                _context.Add(visit);
+                PatientDepartmentId = pd.Id,
+                VisitDate = vm.VisitDate,
+                Comments = vm.Comments
+            };
+            _context.Visits.Add(visit);
+            await _context.SaveChangesAsync();
+
+            if (vm.Attachments != null && vm.Attachments.Any())
+            {
+                var uploadRoot = Path.Combine("wwwroot", "uploads",
+                    vm.PatientId.ToString(), visit.Id.ToString());
+                Directory.CreateDirectory(uploadRoot);
+                foreach (var file in vm.Attachments)
+                {
+                    var fn = Path.GetFileName(file.FileName);
+                    var phys = Path.Combine(uploadRoot, fn);
+                    using var stream = System.IO.File.Create(phys);
+                    await file.CopyToAsync(stream);
+                    _context.VisitAttachments.Add(new VisitAttachment
+                    {
+                        VisitId = visit.Id,
+                        FileName = fn,
+                        FilePath = phys.Replace("wwwroot", ""),
+                        UploadedAt = DateTime.UtcNow
+                    });
+                }
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            ViewData["PatientDepartmentId"] = new SelectList(_context.PatientDepartments, "Id", "DepartmentName", visit.PatientDepartmentId);
-            return View(visit);
+
+            return RedirectToAction("Details", "Patients", new { id = vm.PatientId });
         }
 
         // GET: Visits/Edit/5

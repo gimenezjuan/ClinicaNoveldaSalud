@@ -21,19 +21,57 @@ namespace ClinicaNoveldaSalud.Controllers
         }
 
         // GET: Patients
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search, string deptFilter)
         {
-            var patients = await _context.Patients
-                                .Include(p => p.PatientDepartments)   
-                                .ToListAsync();
-            return View(patients);
+            var query = _context.Patients
+                .Include(p => p.PatientDepartments)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var terms = search
+                    .Trim()
+                    .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var term in terms)
+                {
+                    var t = term.ToLower();
+                    query = query.Where(p =>
+                        p.FirstName.ToLower().Contains(t) ||
+                        p.LastName.ToLower().Contains(t));
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(deptFilter))
+            {
+                query = query.Where(p =>
+                    p.PatientDepartments
+                     .OrderByDescending(pd => pd.CreatedAt)
+                     .Select(pd => pd.DepartmentName)
+                     .FirstOrDefault()
+                     .Contains(deptFilter));
+            }
+
+            var depts = await _context.PatientDepartments
+                .Select(pd => pd.DepartmentName)
+                .Distinct()
+                .OrderBy(d => d)
+                .ToListAsync();
+            ViewBag.DepartmentList = new SelectList(depts);
+
+            ViewData["Search"] = search;
+            ViewData["DeptFilter"] = deptFilter;
+
+            var list = await query.ToListAsync();
+            return View(list);
         }
 
         // GET: Patients/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string deptFilter)
         {
             if (id == null) return NotFound();
 
+            // 1. Cargo la ficha principal con sus departamentos, visitas y adjuntos
             var patient = await _context.Patients
                 .Include(p => p.PatientDepartments)
                     .ThenInclude(pd => pd.Visits)
@@ -41,12 +79,42 @@ namespace ClinicaNoveldaSalud.Controllers
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (patient == null) return NotFound();
+
+            // 2. Busco duplicados por nombre, apellidos y fecha de nacimiento
+            var duplicates = await _context.Patients
+                .Where(p =>
+                    p.Id != patient.Id &&
+                    p.FirstName == patient.FirstName &&
+                    p.LastName == patient.LastName &&
+                    p.BirthDate == patient.BirthDate)
+                .Select(p => new
+                {
+                    p.Id,
+                    // tomo el nombre de su último departamento para mostrarlo
+                    DeptName = p.PatientDepartments
+                                .OrderByDescending(pd => pd.CreatedAt)
+                                .Select(pd => pd.DepartmentName)
+                                .FirstOrDefault()
+                })
+                .ToListAsync();
+
+            // 3. Paso los duplicados a la vista
+            ViewData["DuplicatePatients"] = duplicates;
+            ViewData["DeptFilter"] = deptFilter;
+
+            // 4. Preparo el select de departamentos como antes
+            var deptNames = patient.PatientDepartments
+                .Select(pd => pd.DepartmentName)
+                .Distinct()
+                .OrderBy(d => d)
+                .ToList();
+            ViewData["DepartmentList"] = new SelectList(deptNames, deptFilter);
+
             return View(patient);
         }
         // GET: Patients/Create
         public IActionResult Create()
         {
-            // Devolvemos un VM vacío al formulario
             return View(new PatientViewModel());
         }
 

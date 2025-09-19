@@ -19,11 +19,11 @@
                placeholder="Buscar nombre..." />
     </div>
     <div class="col-auto">
-        <input type="text"
-               name="deptFilter"
-               value="@(ViewData["DeptFilter"] ?? "")"
-               class="form-control"
-               placeholder="Departamento..." />
+        <select name="deptFilter"
+                class="form-select"
+                asp-items="ViewBag.DepartmentList">
+            <option value="">Todos los departamentos</option>
+        </select>
     </div>
     <div class="col-auto">
         <button type="submit" class="btn btn-outline-secondary">Filtrar</button>

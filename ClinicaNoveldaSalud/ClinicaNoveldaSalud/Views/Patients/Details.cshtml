@@ -1,8 +1,12 @@
 ﻿@model ClinicaNoveldaSalud.Models.Patient
+@using Microsoft.AspNetCore.Mvc.Rendering
 
 @{
     ViewData["Title"] = "Ficha de Paciente";
+    var duplicates = ViewData["DuplicatePatients"]
+                    as IEnumerable<dynamic>;
 }
+
 
 <h1>@Model.FullName</h1>
 
@@ -17,12 +21,34 @@
         <dt class="col-sm-3">Aseguradora</dt>
         <dd class="col-sm-9">@Model.InsurerName</dd>
     </dl>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Editar Paciente</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">
+        Editar Paciente
+    </a>
     <a asp-action="Index" class="btn btn-secondary">Volver al listado</a>
 </div>
 
-@* Recorremos cada departamento asignado al paciente *@
-@foreach (var pd in Model.PatientDepartments.OrderByDescending(pd => pd.CreatedAt))
+@if (duplicates != null && duplicates.Any())
+{
+    <div class="alert alert-info">
+        <strong>Otras fichas de este paciente:</strong>
+        <ul class="mb-0">
+            @foreach (var d in duplicates)
+            {
+                <li>
+                    <a asp-action="Details"
+                       asp-route-id="@d.Id">
+                        Ver en “@d.DeptName”
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+<hr />
+
+@foreach (var pd in Model.PatientDepartments
+                      .OrderByDescending(pd => pd.CreatedAt))
 {
     <div class="card mb-3">
         <div class="card-header">
@@ -45,15 +71,27 @@
                     {
                         <tr>
                             <td>@v.VisitDate.ToString("dd/MM/yyyy")</td>
-                            <td>@v.Comments</td>
+                            <td style="white-space: pre-wrap; word-wrap: break-word; max-width:300px;">
+                                @v.Comments
+                            </td>
                             <td>
                                 @foreach (var a in v.Attachments)
                                 {
-                                    <div>
+                                    <div class="d-flex align-items-center">
                                         <a target="_blank"
                                            href="~/uploads/@Model.Id/@v.Id/@a.FileName">
                                             @a.FileName
                                         </a>
+                                        <form asp-controller="VisitAttachments"
+                                              asp-action="Delete"
+                                              method="post"
+                                              class="ms-2">
+                                            <input type="hidden" name="id" value="@a.Id" />
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-outline-danger">
+                                                🗑
+                                            </button>
+                                        </form>
                                     </div>
                                 }
                             </td>
@@ -63,14 +101,15 @@
             </table>
         </div>
     </div>
-    <h3>Añadir nueva visita</h3>
-    <div id="addVisitContainer">
-        @await Html.PartialAsync(
+}
+
+<h3>Añadir nueva visita</h3>
+<div id="addVisitContainer">
+    @await Html.PartialAsync(
         "_AddVisitPartial",
         new ClinicaNoveldaSalud.Models.ViewModels.AddVisitViewModel
         {
             PatientId = Model.Id,
             VisitDate = DateTime.Today
         })
-    </div>
-}
+</div>

@@ -146,14 +146,35 @@ namespace ClinicaNoveldaSalud.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var visitAttachment = await _context.VisitAttachments.FindAsync(id);
-            if (visitAttachment != null)
-            {
-                _context.VisitAttachments.Remove(visitAttachment);
-            }
+            // 1) Recuperamos el adjunto
+            var att = await _context.VisitAttachments.FindAsync(id);
+            if (att == null)
+                return NotFound();
 
+            // 2) Borramos el fichero físico
+            //    En FilePath tienes algo tipo "/uploads/{patientId}/{visitId}/{fileName}"
+            var physPath = Path.Combine(
+                 "wwwroot",
+                 att.FilePath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar)
+            );
+            if (System.IO.File.Exists(physPath))
+                System.IO.File.Delete(physPath);
+
+            // 3) Guardamos el VisitId para la redirección posterior
+            var visitId = att.VisitId;
+
+            // 4) Eliminamos el registro de la BBDD
+            _context.VisitAttachments.Remove(att);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            // 5) Sacamos el PatientId para llevar al usuario a la ficha correcta
+            var visit = await _context.Visits
+                .Include(v => v.PatientDepartment)
+                .FirstOrDefaultAsync(v => v.Id == visitId);
+            var patientId = visit?.PatientDepartment.PatientId;
+
+            // 6) Redirigimos a Details de Patients
+            return RedirectToAction("Details", "Patients", new { id = patientId });
         }
 
         private bool VisitAttachmentExists(int id)
