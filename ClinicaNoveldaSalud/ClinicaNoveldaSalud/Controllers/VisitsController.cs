@@ -199,5 +199,70 @@ namespace ClinicaNoveldaSalud.Controllers
         {
             return _context.Visits.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddAjax(AddVisitViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errores = string.Join(" | ", ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage));
+                return BadRequest("Error de validación: " + errores);
+            }
+
+            if (model.PatientId == 0)
+                return BadRequest("PatientId no recibido");
+
+            var patientDepartmentId = await _context.PatientDepartments
+                .Where(pd => pd.PatientId == model.PatientId)
+                .OrderByDescending(pd => pd.CreatedAt)
+                .Select(pd => pd.Id)
+                .FirstOrDefaultAsync();
+
+            if (patientDepartmentId == 0)
+                return BadRequest("El paciente no tiene ningún departamento asignado.");
+
+            var visit = new Visit
+            {
+                VisitDate = model.VisitDate,
+                Comments = model.Comments,
+                PatientDepartmentId = patientDepartmentId
+            };
+
+            _context.Visits.Add(visit);
+            await _context.SaveChangesAsync();
+
+            if (model.Attachments != null && model.Attachments.Any())
+            {
+                foreach (var file in model.Attachments)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine("wwwroot/uploads", $"{model.PatientId}", $"{visit.Id}", fileName);
+
+                    Directory.CreateDirectory(Path.GetDirectoryName(path));
+                    using var stream = new FileStream(path, FileMode.Create);
+                    await file.CopyToAsync(stream);
+
+                    _context.VisitAttachments.Add(new VisitAttachment
+                    {
+                        FileName = fileName,
+                        VisitId = visit.Id
+                    });
+                }
+
+                await _context.SaveChangesAsync();
+            }
+
+            visit.Attachments = await _context.VisitAttachments
+                .Where(a => a.VisitId == visit.Id)
+                .ToListAsync();
+            visit = await _context.Visits
+                                    .Include(v => v.Attachments)
+                                    .Include(v => v.PatientDepartment)
+                                    .FirstOrDefaultAsync(v => v.Id == visit.Id);
+
+            return PartialView("_VisitRowPartial", visit);
+        }
     }
 }
