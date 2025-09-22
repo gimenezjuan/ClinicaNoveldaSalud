@@ -5,6 +5,9 @@
     ViewData["Title"] = "Ficha de Paciente";
     var duplicates = ViewData["DuplicatePatients"]
                     as IEnumerable<dynamic>;
+    var fromDate = ViewData["FromDate"] as DateTime?;
+    var onlyWithFiles = ViewData["OnlyWithFiles"] as bool?;
+    var visitDateOptions = ViewData["VisitDateOptions"] as SelectList;
 }
 
 
@@ -46,6 +49,29 @@
 }
 
 <hr />
+<form method="get" class="row g-2 mb-3">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <div class="col-auto">
+        <label class="form-label">Filtrar por fecha:</label>
+        <select name="fromDate" class="form-select" asp-items="visitDateOptions">
+            <option value="">Todas las fechas</option>
+        </select>
+    </div>
+
+    <div class="col-auto">
+        <label class="form-label">Solo con archivos:</label>
+        <input type="checkbox" name="onlyWithFiles" value="true"
+               @(onlyWithFiles == true ? "checked" : "") />
+    </div>
+
+    <div class="col-auto align-self-end">
+        <button type="submit" class="btn btn-outline-primary">Filtrar visitas</button>
+        <a asp-action="Details"
+           asp-route-id="@Model.Id"
+           class="btn btn-link">Limpiar</a>
+    </div>
+</form>
 
 @foreach (var pd in Model.PatientDepartments
                       .OrderByDescending(pd => pd.CreatedAt))
@@ -67,7 +93,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var v in pd.Visits.OrderByDescending(v => v.VisitDate))
+                    @foreach (var v in pd.Visits.OrderByDescending(v => v.VisitDate)
+                                                .Where(v =>
+                                                (!fromDate.HasValue || v.VisitDate.Date == fromDate.Value.Date) &&
+                                                (!onlyWithFiles.HasValue || !onlyWithFiles.Value || v.Attachments.Any())))
                     {
                         <tr>
                             <td>@v.VisitDate.ToString("dd/MM/yyyy")</td>

@@ -67,7 +67,7 @@ namespace ClinicaNoveldaSalud.Controllers
         }
 
         // GET: Patients/Details/5
-        public async Task<IActionResult> Details(int? id, string deptFilter)
+        public async Task<IActionResult> Details(int? id, string deptFilter, DateTime? fromDate, bool? onlyWithFiles)
         {
             if (id == null) return NotFound();
 
@@ -108,7 +108,21 @@ namespace ClinicaNoveldaSalud.Controllers
                 .Distinct()
                 .OrderBy(d => d)
                 .ToList();
+
+            ViewData["FromDate"] = fromDate;
+            ViewData["OnlyWithFiles"] = onlyWithFiles;
             ViewData["DepartmentList"] = new SelectList(deptNames, deptFilter);
+
+            var visitDates = patient.PatientDepartments
+                                    .SelectMany(pd => pd.Visits)
+                                    .Select(v => v.VisitDate.Date)
+                                    .Distinct()
+                                    .OrderByDescending(d => d)
+                                    .ToList();
+
+            ViewData["VisitDateOptions"] = new SelectList(
+                visitDates.Select(d => new { Value = d.ToString("yyyy-MM-dd"), Text = d.ToString("dd/MM/yyyy") }),
+                "Value", "Text", fromDate?.ToString("yyyy-MM-dd"));
 
             return View(patient);
         }
