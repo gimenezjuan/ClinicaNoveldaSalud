@@ -16,7 +16,6 @@ namespace ClinicaNoveldaSalud.Models
         [Display(Name = "Apellidos")]
         public string LastName { get; set; } = null!;
 
-        [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha de nacimiento")]
         public DateTime? BirthDate { get; set; }
@@ -34,6 +33,5 @@ namespace ClinicaNoveldaSalud.Models
 
         [NotMapped]
         public string FullName => $"{FirstName} {LastName}";
-
     }
 }
