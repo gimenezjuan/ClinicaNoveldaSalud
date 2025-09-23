@@ -58,8 +58,18 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\12\47\1377116.jpg
 wwwroot\uploads\1\1\JUAN_GIMENEZ_CV.pdf
 wwwroot\uploads\1\2\GIMENEZ_JUAN.pdf
-wwwroot\uploads\2\6\juan-gimenez.cv.pdf
+wwwroot\uploads\21\53\1365294.jpeg
+wwwroot\uploads\21\54\GIMENEZ_JUAN.pdf (1).pdf
+wwwroot\uploads\24\64\esquema_relaciones_simplificado.png
+wwwroot\uploads\24\66\esquema_relaciones_simplificado.png
+wwwroot\uploads\24\67\relaciones_entidades.png
+wwwroot\uploads\25\69\relaciones_entidades.png
+wwwroot\uploads\25\70\relaciones_entidades.png
+wwwroot\uploads\28\74\esquema_relaciones_simplificado.png
+wwwroot\uploads\28\75\CV_Juan_Gimenez_AtencionCliente.pdf
+wwwroot\uploads\29\76\esquema_relaciones_simplificado.png
 wwwroot\uploads\2\10\1377111.jpg
-wwwroot\uploads\12\47\1377116.jpg
+wwwroot\uploads\2\6\juan-gimenez.cv.pdf

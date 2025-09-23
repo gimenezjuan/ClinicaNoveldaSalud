@@ -21,7 +21,7 @@ namespace ClinicaNoveldaSalud.Controllers
         }
 
         // GET: Patients
-        public async Task<IActionResult> Index(string search, string deptFilter)
+        public async Task<IActionResult> Index(string search, string deptFilter, DateTime? birthDate)
         {
             var query = _context.Patients
                 .Include(p => p.PatientDepartments)
@@ -41,7 +41,10 @@ namespace ClinicaNoveldaSalud.Controllers
                         p.LastName.ToLower().Contains(t));
                 }
             }
-
+            if (birthDate.HasValue)
+            {
+                query = query.Where(p => p.BirthDate.HasValue && p.BirthDate.Value.Date == birthDate.Value.Date);
+            }
             if (!string.IsNullOrWhiteSpace(deptFilter))
             {
                 query = query.Where(p =>
@@ -61,6 +64,7 @@ namespace ClinicaNoveldaSalud.Controllers
 
             ViewData["Search"] = search;
             ViewData["DeptFilter"] = deptFilter;
+            ViewData["BirthDate"] = birthDate?.ToString("yyyy-MM-dd");
 
             var list = await query.ToListAsync();
             return View(list);

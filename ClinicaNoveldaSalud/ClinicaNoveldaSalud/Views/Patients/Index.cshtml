@@ -19,6 +19,13 @@
                placeholder="Buscar nombre..." />
     </div>
     <div class="col-auto">
+        <input type="date" 
+               name="birthDate" 
+               class="form-control"
+               placeholder="Filtrar por fecha de nacimiento..."
+               value="@ViewData["BirthDate"]" />
+    </div>
+    <div class="col-auto">
         <select name="deptFilter"
                 class="form-select"
                 asp-items="ViewBag.DepartmentList">

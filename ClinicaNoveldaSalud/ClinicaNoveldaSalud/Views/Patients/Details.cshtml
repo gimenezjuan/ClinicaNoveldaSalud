@@ -18,6 +18,12 @@
         @TempData["ErrorMessage"]
     </div>
 }
+@if (TempData["FormError"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["FormError"]
+    </div>
+}
 <div class="mb-4">
     <dl class="row">
         <dt class="col-sm-3">Fecha de nacimiento</dt>
@@ -35,6 +41,18 @@
     <a asp-action="Index" class="btn btn-secondary">Volver al listado</a>
 </div>
 
+<h3>Añadir nueva visita</h3>
+<div id="addVisitContainer">
+    @await Html.PartialAsync(
+    "_AddVisitPartial",
+        new ClinicaNoveldaSalud.Models.ViewModels.AddVisitViewModel
+        {
+            PatientId = Model.Id,
+            VisitDate = DateTime.Today
+        })
+</div>
+<br />
+<br />
 @if (duplicates != null && duplicates.Any())
 {
     <div class="alert alert-info">
@@ -136,14 +154,3 @@
         </div>
     </div>
 }
-
-<h3>Añadir nueva visita</h3>
-<div id="addVisitContainer">
-    @await Html.PartialAsync(
-        "_AddVisitPartial",
-        new ClinicaNoveldaSalud.Models.ViewModels.AddVisitViewModel
-        {
-            PatientId = Model.Id,
-            VisitDate = DateTime.Today
-        })
-</div>

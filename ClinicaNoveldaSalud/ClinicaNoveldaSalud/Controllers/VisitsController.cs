@@ -64,7 +64,10 @@ namespace ClinicaNoveldaSalud.Controllers
         public async Task<IActionResult> Add(AddVisitViewModel vm)
         {
             if (!ModelState.IsValid)
-                return PartialView("_AddVisitPartial", vm);
+            {
+                TempData["FormError"] = "Por favor, rellena los campos obligatorios.";
+                return RedirectToAction("Details", "Patients", new { id = vm.PatientId });
+            }
 
             var pd = await _context.PatientDepartments
                 .Where(x => x.PatientId == vm.PatientId)
