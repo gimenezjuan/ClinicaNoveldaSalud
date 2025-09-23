@@ -142,7 +142,6 @@ C:\Users\Juang\Desktop\Projects\ClinicaNoveldaSalud\ClinicaNoveldaSalud\ClinicaN
 C:\Users\Juang\Desktop\Projects\ClinicaNoveldaSalud\ClinicaNoveldaSalud\ClinicaNoveldaSalud\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Juang\Desktop\Projects\ClinicaNoveldaSalud\ClinicaNoveldaSalud\ClinicaNoveldaSalud\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Juang\Desktop\Projects\ClinicaNoveldaSalud\ClinicaNoveldaSalud\ClinicaNoveldaSalud\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Juang\Desktop\Projects\ClinicaNoveldaSalud\ClinicaNoveldaSalud\ClinicaNoveldaSalud\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Juang\Desktop\Projects\ClinicaNoveldaSalud\ClinicaNoveldaSalud\ClinicaNoveldaSalud\obj\Debug\net8.0\ClinicaN.8C9E70F5.Up2Date
 C:\Users\Juang\Desktop\Projects\ClinicaNoveldaSalud\ClinicaNoveldaSalud\ClinicaNoveldaSalud\obj\Debug\net8.0\ClinicaNoveldaSalud.dll
 C:\Users\Juang\Desktop\Projects\ClinicaNoveldaSalud\ClinicaNoveldaSalud\ClinicaNoveldaSalud\obj\Debug\net8.0\refint\ClinicaNoveldaSalud.dll
