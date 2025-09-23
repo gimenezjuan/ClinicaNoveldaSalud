@@ -73,4 +73,19 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            const birthDateInput = document.getElementById("BirthDate");
+            const birthDate = new Date(birthDateInput.value);
+            const today = new Date();
+
+            if (birthDate > today) {
+                e.preventDefault();
+                alert("La fecha de nacimiento no puede ser futura.");
+                birthDateInput.classList.add("is-invalid");
+            }
+        });
+    </script>
 }

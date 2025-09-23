@@ -58,6 +58,7 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\12\47\1377116.jpg
 wwwroot\uploads\1\1\JUAN_GIMENEZ_CV.pdf
 wwwroot\uploads\1\2\GIMENEZ_JUAN.pdf
 wwwroot\uploads\2\10\1377111.jpg
