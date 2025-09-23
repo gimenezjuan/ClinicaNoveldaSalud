@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClinicaNoveldaSalud")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4940393a4ef557d946fe78049a9e5ccddcf1fdb8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f393881d276cb7511db7efe24c1f6440355cec36")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClinicaNoveldaSalud")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClinicaNoveldaSalud")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
