@@ -4,51 +4,39 @@
     ViewData["Title"] = "Eliminar Paciente";
 }
 
-<h1>Elimnar @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</h1>
+<h1 class="text-novelda">
+    🗑 Eliminar @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+</h1>
 
-<h3>Estás seguro/a que quieres eliminar a este paciente?</h3>
-<span style="color:red;"><i>Al eliminar un paciente se hace de forma permanente</i></span>
+<div class="alert alert-warning mt-3">
+    ⚠️ <strong>¿Estás seguro/a que quieres eliminar a este paciente?</strong><br />
+    <small class="text-danger"><i>Esta acción es permanente y no se puede deshacer.</i></small>
+</div>
 <br />
 <br />
 <div>
     <h4>@Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InsurerName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InsurerName)
-        </dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FirstName)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.LastName)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.LastName)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.BirthDate)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.BirthDate)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Phone)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Phone)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.InsurerName)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.InsurerName)</dd>
     </dl>
-    
-    <form asp-action="Delete">
+
+    <form asp-action="Delete" class="mt-4">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a la lista de pacientes</a>
+        <button type="submit" class="btn btn-danger me-2">🗑 Eliminar definitivamente</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">⬅️ Volver al listado</a>
     </form>
 </div>

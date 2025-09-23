@@ -11,17 +11,17 @@
 }
 
 
-<h1>@Model.FullName</h1>
+<h1 class="text-novelda">@Model.FullName</h1>
 @if (TempData["ErrorMessage"] != null)
 {
     <div class="alert alert-danger">
-        @TempData["ErrorMessage"]
+        ⚠️ @TempData["ErrorMessage"]
     </div>
 }
 @if (TempData["FormError"] != null)
 {
     <div class="alert alert-danger">
-        @TempData["FormError"]
+        ⚠️ @TempData["FormError"]
     </div>
 }
 <div class="mb-4">
@@ -35,13 +35,15 @@
         <dt class="col-sm-3">Aseguradora</dt>
         <dd class="col-sm-9">@Model.InsurerName</dd>
     </dl>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">
-        Editar Paciente
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-novelda">
+        ✏️ Editar Paciente
     </a>
-    <a asp-action="Index" class="btn btn-secondary">Volver al listado</a>
+    <a asp-action="Index" class="btn btn-outline-secondary">
+        ⬅️ Volver al listado
+    </a>
 </div>
 
-<h3>Añadir nueva visita</h3>
+<h3 class="mt-4 text-novelda">🩺 Añadir nueva visita</h3>
 <div id="addVisitContainer">
     @await Html.PartialAsync(
     "_AddVisitPartial",
@@ -100,7 +102,7 @@
                       .OrderByDescending(pd => pd.CreatedAt))
 {
     <div class="card mb-3">
-        <div class="card-header">
+        <div class="card-header bg-novelda text-dark">
             Departamento: @pd.DepartmentName
             <span class="badge bg-light text-dark float-end">
                 Creado @pd.CreatedAt.ToString("dd/MM/yyyy")
@@ -139,9 +141,8 @@
                                               method="post"
                                               class="ms-2">
                                             <input type="hidden" name="id" value="@a.Id" />
-                                            <button type="submit"
-                                                    class="btn btn-sm btn-outline-danger">
-                                                🗑
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                🗑 Eliminar
                                             </button>
                                         </form>
                                     </div>

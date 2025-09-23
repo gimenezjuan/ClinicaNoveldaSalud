@@ -4,13 +4,17 @@
     ViewData["Title"] = "Editar Paciente";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-novelda">@ViewData["Title"]</h1>
 
+<hr class="mt-4 mb-3" />
+<h5 class="text-novelda">🧾 Datos del paciente</h5>
 <form asp-action="Edit"
       asp-route-id="@Model.Id"
       enctype="multipart/form-data"
       class="row g-3">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger">
+        ⚠️ Por favor, revisa los errores del formulario.
+    </div>
     <input type="hidden" asp-for="Id" />
 
     <!-- Datos básicos -->
@@ -35,6 +39,7 @@
         <span asp-validation-for="Phone" class="text-danger"></span>
     </div>
 
+    <h5 class="text-novelda mt-4">🏥 Información adicional</h5>
     <!-- Aseguradora -->
     <div class="col-md-6">
         <label asp-for="InsurerName" class="form-label"></label>
@@ -50,8 +55,8 @@
     </div>
 
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-novelda">💾 Guardar Cambios</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">❌ Cancelar</a>
     </div>
 </form>
 
