@@ -1,9 +1,8 @@
 ﻿@model ClinicaNoveldaSalud.Models.ViewModels.AddVisitViewModel
 
-<form asp-action="AddAjax" asp-controller="Visits"
-      enctype="multipart/form-data" id="frmAddVisit">
+<form asp-action="Add" asp-controller="Visits"
+      enctype="multipart/form-data">
     <input type="hidden" asp-for="PatientId" />
-
     <div class="mb-3">
         <label asp-for="VisitDate" class="form-label"></label>
         <input asp-for="VisitDate" type="date" class="form-control" />
